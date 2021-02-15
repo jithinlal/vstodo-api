@@ -15,9 +15,10 @@ import { isAuth } from './isAuth';
 (async () => {
 	await createConnection({
 		type: 'postgres',
-		database: 'vstodo',
-		username: 'jithin',
-		password: 'root',
+		host: process.env.DB_HOST,
+		database: process.env.DB_NAME,
+		username: process.env.DB_USERNAME,
+		password: process.env.DB_PASSWORD,
 		entities: [path.join(__dirname, './entities/*.*')],
 		logging: !__PROD__,
 		synchronize: !__PROD__,
