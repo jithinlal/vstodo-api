@@ -132,5 +132,5 @@ import { isAuth } from './isAuth';
 		res.send({ user });
 	});
 
-	app.listen(3002, () => console.log('Server started at 3002'));
+	app.listen(process.env.PORT, () => console.log('Server started at 3002'));
 })();
