@@ -28,8 +28,8 @@ import { isAuth } from './isAuth';
 				rejectUnauthorized: false,
 			},
 		},
-		logging: !__PROD__,
-		synchronize: !__PROD__,
+		logging: __PROD__,
+		synchronize: __PROD__,
 	});
 	const app = express();
 	passport.serializeUser(function (user: any, done) {
