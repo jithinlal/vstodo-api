@@ -14,13 +14,17 @@ import { isAuth } from './isAuth';
 
 (async () => {
 	await createConnection({
+		url: process.env.DATABASE_URL,
 		type: 'postgres',
-		host: process.env.DB_HOST,
-		database: process.env.DB_NAME,
-		username: process.env.DB_USERNAME,
-		password: process.env.DB_PASSWORD,
+		// host: process.env.DB_HOST,
+		// database: process.env.DB_NAME,
+		// username: process.env.DB_USERNAME,
+		// password: process.env.DB_PASSWORD,
 		entities: [path.join(__dirname, './entities/*.*')],
-		ssl: { rejectUnauthorized: false },
+		// ssl: { rejectUnauthorized: false },
+		extra: {
+			ssl: true,
+		},
 		logging: !__PROD__,
 		synchronize: !__PROD__,
 	});
@@ -132,5 +136,7 @@ import { isAuth } from './isAuth';
 		res.send({ user });
 	});
 
-	app.listen(process.env.PORT, () => console.log('Server started at 3002'));
+	app.listen(process.env.PORT, () =>
+		console.log(`Server started on ${process.env.PORT}`),
+	);
 })();
