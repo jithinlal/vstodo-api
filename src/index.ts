@@ -36,7 +36,9 @@ import { isAuth } from './isAuth';
 			{
 				clientID: process.env.GITHUB_CLIENT_ID,
 				clientSecret: process.env.GITHUB_CLIENT_SECRET,
-				callbackURL: 'http://localhost:3002/auth/github/callback',
+				// callbackURL: 'http://localhost:3002/auth/github/callback',
+				callbackURL:
+					'https://vscode-extension.herokuapp.com/auth/github/callback',
 			},
 			async (_, __, profile, cb) => {
 				let user = await User.findOne({ where: { githubId: profile.id } });
