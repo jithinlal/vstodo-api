@@ -22,8 +22,11 @@ import { isAuth } from './isAuth';
 		// password: process.env.DB_PASSWORD,
 		entities: [path.join(__dirname, './entities/*.*')],
 		// ssl: { rejectUnauthorized: false },
+		ssl: true,
 		extra: {
-			ssl: true,
+			ssl: {
+				rejectUnauthorized: false,
+			},
 		},
 		logging: !__PROD__,
 		synchronize: !__PROD__,
